@@ -77,11 +77,11 @@ public class Grid {
 		}
 	}
 	
-	//key method to calculate the next update grod
+	//key method to calculate the next update grid
 	boolean update() {
 		boolean change=false;
 		//do not update border
-		for( int i = 1; i<rows-1; i++ ) {
+		for( int i = 1; i<rows-1; i++ ) {			//TODO easy to split amongst threads
 			for( int j = 1; j<columns-1; j++ ) {
 				updateGrid[i][j] = (grid[i][j] % 4) + 
 						(grid[i-1][j] / 4) +
