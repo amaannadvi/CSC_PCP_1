@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 
 class AutomatonSimulation{
-	static final boolean DEBUG=true;//for debugging output, off
+	static final boolean DEBUG=false;//for debugging output, off
 	
 	static long startTime = 0;
 	static long endTime = 0;
