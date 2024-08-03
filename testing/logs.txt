@@ -1,0 +1,66 @@
+amaan@Surface:~/CSC_PCP_1$ make run
+java -classpath bin serialAbelianSandpile.AutomatonSimulation input/100_by_100_all_4.csv output/output_serial.png
+Rows: 100, Columns: 100
+Simulation complete, writing image...
+Number of steps to stable state: 2721
+Time: 74 ms
+amaan@Surface:~/CSC_PCP_1$ cd parallel/
+amaan@Surface:~/CSC_PCP_1/parallel$ make run
+java -classpath bin parallelAbelianSandpile.AutomatonSimulation input/100_by_100_all_4.csv output/output_parallel.png
+Rows: 100, Columns: 100
+Simulation complete, writing image...
+Number of steps to stable state: 2721
+Time: 119 ms
+
+java -classpath bin serialAbelianSandpile.AutomatonSimulation input/211_by_211_all_4.csv output/output_serial.png
+Rows: 211, Columns: 211
+Simulation complete, writing image...
+Number of steps to stable state: 11907 
+Time: 1475 ms
+amaan@Surface:~/CSC_PCP_1$ cd parallel/
+amaan@Surface:~/CSC_PCP_1/parallel$ make run
+java -classpath bin parallelAbelianSandpile.AutomatonSimulation input/211_by_211_all_4.csv output/output_parallel.png
+Rows: 211, Columns: 211
+Simulation complete, writing image...
+Number of steps to stable state: 11907 
+Time: 1672 ms
+
+java -classpath bin serialAbelianSandpile.AutomatonSimulation input/333_by_333_all_4.csv output/output_serial.png
+Rows: 333, Columns: 333
+Simulation complete, writing image...
+Number of steps to stable state: 29761 
+Time: 8991 ms
+amaan@Surface:~/CSC_PCP_1$ cd parallel/
+amaan@Surface:~/CSC_PCP_1/parallel$ make run
+java -classpath bin parallelAbelianSandpile.AutomatonSimulation input/333_by_333_all_4.csv output/output_parallel.png
+Rows: 333, Columns: 333
+Simulation complete, writing image...
+Number of steps to stable state: 29761 
+Time: 6073 ms
+
+java -classpath bin serialAbelianSandpile.AutomatonSimulation input/513_by_513_all_4.csv output/output_serial.png
+Rows: 513, Columns: 513
+Simulation complete, writing image...
+Number of steps to stable state: 70167 
+Time: 51675 ms
+amaan@Surface:~/CSC_PCP_1$ cd parallel/
+amaan@Surface:~/CSC_PCP_1/parallel$ make run
+java -classpath bin parallelAbelianSandpile.AutomatonSimulation input/513_by_513_all_4.csv output/output_parallel.png
+Rows: 513, Columns: 513
+Simulation complete, writing image...
+Number of steps to stable state: 70167 
+Time: 27059 ms
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+java -classpath bin serialAbelianSandpile.AutomatonSimulation input/265_by_265_all_4.csv output/output_serial.png
+Rows: 265, Columns: 265
+Simulation complete, writing image...
+Number of steps to stable state: 18823 
+Time: 3618 ms
+amaan@Surface:~/CSC_PCP_1$ cd parallel/
+amaan@Surface:~/CSC_PCP_1/parallel$ make run
+java -classpath bin parallelAbelianSandpile.AutomatonSimulation input/265_by_265_all_4.csv output/output_parallel.png  
+Rows: 265, Columns: 265
+Simulation complete, writing image...
+Number of steps to stable state: 18823 
+Time: 3033 ms

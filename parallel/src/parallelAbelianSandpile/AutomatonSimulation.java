@@ -64,8 +64,8 @@ class AutomatonSimulation{
     	if (args.length!=2) {   //input is the name of the input and output files
     		System.out.println("Incorrect number of command line arguments provided.");   	
     		System.out.println("Using default input and output setting from original files.(error caused if files not found)");
-			inputFileName = "input/517_by_517_centre_600000.csv";
-			outputFileName = "output/output_parallel.png";
+			inputFileName = "input/1001_by_1001_all_8.csv";
+			outputFileName = "output/1001_by_1001_all_8.png";
     	}else{
     		/* Read argument values */
   			inputFileName = args[0];  //input file name

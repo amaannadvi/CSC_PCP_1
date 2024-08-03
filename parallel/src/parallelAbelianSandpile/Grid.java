@@ -14,6 +14,8 @@ public class Grid {
 	private int [][] grid; //grid 
 	private int [][] updateGrid;//grid for next time step
 	private static boolean change;
+
+	private final ForkJoinPool pool = ForkJoinPool.commonPool();
     
 	public Grid(int w, int h) {
 		rows = w+2; //for the "sink" border
@@ -87,9 +89,7 @@ public class Grid {
 	boolean update() {
 		change=false;
 		Updater ud = new Updater(grid,updateGrid,1,1,rows-2,columns-2);
-		ForkJoinPool pool =new ForkJoinPool();
-		pool.invoke(ud);
-		pool.shutdown();		
+		change = pool.invoke(ud);	
 	//	try{
 	//		gridToImage("output/output_parallel.png"); //write grid as an image - you must do this.
 	//		Thread.sleep(500);

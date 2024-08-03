@@ -4,7 +4,7 @@ import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 import java.util.concurrent.RecursiveTask;
 
-public class Updater extends RecursiveTask {
+public class Updater extends RecursiveTask<Boolean> {
     int[][]grid;
     int[][]updateGrid;
     int offsetX;
@@ -26,8 +26,8 @@ public class Updater extends RecursiveTask {
     
     @Override
     protected Boolean compute(){
-        
-        if (lengthX<=64){
+        boolean change= false;
+        if (lengthX<=100){
             for( int i = offsetX; i<lengthX+offsetX; i++ ) {	
                 for( int j = offsetY; j<lengthY+offsetY; j++ ) {
                     updateGrid[i][j] = (grid[i][j] % 4) + 
@@ -36,9 +36,10 @@ public class Updater extends RecursiveTask {
                             (grid[i][j-1] / 4 )+ 
                             (grid[i][j+1] / 4);
                     if (grid[i][j]!=updateGrid[i][j]) {  
-					    AutomatonSimulation.simulationGrid.setChange(true);
+					    change = true;
                         
 				    }
+
             }} //end nested for
         }
         else {
@@ -46,6 +47,12 @@ public class Updater extends RecursiveTask {
             int splitY = (int)(lengthY/2.0);
             int LLengthX = lengthX-splitX; //larger half of lengthX
             int LLengthY = lengthY - splitY;//larger half of lengthY
+            
+            boolean c1 = false;
+            boolean c2 = false;
+            boolean c3 = false;
+            boolean c4 = false;
+    
             
             Updater topLeft = new Updater(grid,updateGrid, offsetX,offsetY , splitX, splitY);
             Updater topRight = new Updater(grid,updateGrid,offsetX+splitX,offsetY , LLengthX,LLengthY);
@@ -55,12 +62,15 @@ public class Updater extends RecursiveTask {
             topLeft.fork();
             topRight.fork();
             bottomLeft.fork();
-            bottomRight.compute();
-            topLeft.join();
-            topRight.join();
-            bottomLeft.join();
+
+            c1 = bottomRight.compute();
+            c2 = topLeft.join();
+            c3 = topRight.join();
+            c4 = bottomLeft.join();
             //bottomRight.join();
+
+            if (c1||c2||c3||c4){change=true;}
         }
-        return AutomatonSimulation.simulationGrid.getChange();
+        return change;
     }
 }
