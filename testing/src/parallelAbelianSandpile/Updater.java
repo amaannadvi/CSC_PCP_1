@@ -27,7 +27,7 @@ public class Updater extends RecursiveTask<Boolean> {
     @Override
     protected Boolean compute(){
         boolean change= false;
-        if (lengthX<=100){
+        if (lengthX<=16 && lengthY<=16){
             for( int i = offsetX; i<lengthX+offsetX; i++ ) {	
                 for( int j = offsetY; j<lengthY+offsetY; j++ ) {
                     updateGrid[i][j] = (grid[i][j] % 4) + 

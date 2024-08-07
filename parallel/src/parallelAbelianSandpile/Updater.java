@@ -11,7 +11,9 @@ public class Updater extends RecursiveTask<Boolean> {
     int offsetY;
     int lengthX;
     int lengthY;
-
+    int gridSizeX;
+    int gridSizeY;
+    int numCores;
 
 
     public Updater(int[][]current, int[][] next, int startX,int startY, int lengthX,int lengthY){
@@ -21,13 +23,28 @@ public class Updater extends RecursiveTask<Boolean> {
         this.lengthY=lengthY;
         grid = current;
         updateGrid = next;
+        gridSizeX = lengthX;
+        gridSizeY = lengthY;
+        numCores = Runtime.getRuntime().availableProcessors();
+    }
+
+    public Updater(int[][]current, int[][] next, int startX,int startY, int lengthX,int lengthY,int GridSizeX,int GridSizeY){
+        offsetX=startX;
+        offsetY=startY;
+        this.lengthX=lengthX;
+        this.lengthY=lengthY;
+        grid = current;
+        updateGrid = next;
+        gridSizeX = GridSizeX;
+        gridSizeY = GridSizeY;
+        numCores = Runtime.getRuntime().availableProcessors();
 
     }
     
     @Override
     protected Boolean compute(){
         boolean change= false;
-        if (lengthX<=100){
+        if (lengthX<=gridSizeX/numCores && lengthY <= gridSizeY/numCores){
             for( int i = offsetX; i<lengthX+offsetX; i++ ) {	
                 for( int j = offsetY; j<lengthY+offsetY; j++ ) {
                     updateGrid[i][j] = (grid[i][j] % 4) + 
@@ -54,10 +71,10 @@ public class Updater extends RecursiveTask<Boolean> {
             boolean c4 = false;
     
             
-            Updater topLeft = new Updater(grid,updateGrid, offsetX,offsetY , splitX, splitY);
-            Updater topRight = new Updater(grid,updateGrid,offsetX+splitX,offsetY , LLengthX,LLengthY);
-            Updater bottomLeft = new Updater(grid,updateGrid,offsetX,offsetY+splitY, LLengthX,LLengthY);
-            Updater bottomRight = new Updater(grid,updateGrid,offsetX+LLengthX,offsetY+LLengthY,splitX, splitY);
+            Updater topLeft = new Updater(grid,updateGrid, offsetX,offsetY , splitX, splitY, gridSizeX, gridSizeY);
+            Updater topRight = new Updater(grid,updateGrid,offsetX+splitX,offsetY , LLengthX,LLengthY, gridSizeX, gridSizeY);
+            Updater bottomLeft = new Updater(grid,updateGrid,offsetX,offsetY+splitY, LLengthX,LLengthY, gridSizeX, gridSizeY);
+            Updater bottomRight = new Updater(grid,updateGrid,offsetX+LLengthX,offsetY+LLengthY,splitX, splitY, gridSizeX, gridSizeY);
 
             topLeft.fork();
             topRight.fork();
