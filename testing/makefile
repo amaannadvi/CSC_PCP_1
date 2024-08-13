@@ -46,23 +46,23 @@ clean:
 	rm -rf bin/*
 
 run: all
-	java -classpath bin $(sMAIN_CLASS) input/5_by_5_all_4.csv output/output.png
-	java -classpath bin $(pMAIN_CLASS) input/5_by_5_all_4.csv output/output.png
-	java -classpath bin $(sMAIN_CLASS) input/9_by_9_all_4.csv output/output.png
-	java -classpath bin $(pMAIN_CLASS) input/9_by_9_all_4.csv output/output.png
-	java -classpath bin $(sMAIN_CLASS) input/17_by_17_all_4.csv output/output.png
-	java -classpath bin $(pMAIN_CLASS) input/17_by_17_all_4.csv output/output.png
-	java -classpath bin $(sMAIN_CLASS) input/33_by_33_all_4.csv output/output.png
-	java -classpath bin $(pMAIN_CLASS) input/33_by_33_all_4.csv output/output.png
-	java -classpath bin $(sMAIN_CLASS) input/65_by_65_all_4.csv output/output.png
-	java -classpath bin $(pMAIN_CLASS) input/65_by_65_all_4.csv output/output.png
-	java -classpath bin $(sMAIN_CLASS) input/129_by_129_all_4.csv output/output.png
-	java -classpath bin $(pMAIN_CLASS) input/129_by_129_all_4.csv output/output.png
-	java -classpath bin $(sMAIN_CLASS) input/257_by_257_all_4.csv output/output.png
-	java -classpath bin $(pMAIN_CLASS) input/257_by_257_all_4.csv output/output.png
-	java -classpath bin $(sMAIN_CLASS) input/513_by_513_all_4.csv output/output.png
-	java -classpath bin $(pMAIN_CLASS) input/513_by_513_all_4.csv output/output.png
-	java -classpath bin $(sMAIN_CLASS) input/1025_by_1025_all_4.csv output/output.png
-	java -classpath bin $(pMAIN_CLASS) input/1025_by_1025_all_4.csv output/output.png
+	java -classpath bin $(sMAIN_CLASS) input/2049_by_2049_all_4.csv output/soutput.png
+	java -classpath bin $(pMAIN_CLASS) input/2049_by_2049_all_4.csv output/poutput.png
+	#java -classpath bin $(sMAIN_CLASS) input/9_by_9_all_4.csv output/soutput.png
+	#java -classpath bin $(pMAIN_CLASS) input/9_by_9_all_4.csv output/poutput.png
+	#java -classpath bin $(sMAIN_CLASS) input/17_by_17_all_4.csv output/soutput.png
+	#java -classpath bin $(pMAIN_CLASS) input/17_by_17_all_4.csv output/poutput.png
+	#java -classpath bin $(sMAIN_CLASS) input/33_by_33_all_4.csv output/soutput.png
+	#java -classpath bin $(pMAIN_CLASS) input/33_by_33_all_4.csv output/poutput.png
+	#java -classpath bin $(sMAIN_CLASS) input/65_by_65_all_4.csv output/soutput.png
+	#java -classpath bin $(pMAIN_CLASS) input/65_by_65_all_4.csv output/poutput.png
+	#java -classpath bin $(sMAIN_CLASS) input/129_by_129_all_4.csv output/soutput.png
+	#java -classpath bin $(pMAIN_CLASS) input/129_by_129_all_4.csv output/poutput.png
+	#java -classpath bin $(sMAIN_CLASS) input/257_by_257_all_4.csv output/soutput.png
+	#java -classpath bin $(pMAIN_CLASS) input/257_by_257_all_4.csv output/poutput.png
+	#java -classpath bin $(sMAIN_CLASS) input/513_by_513_all_4.csv output/soutput.png
+	#java -classpath bin $(pMAIN_CLASS) input/513_by_513_all_4.csv output/poutput.png
+	#java -classpath bin $(sMAIN_CLASS) input/1025_by_1025_all_4.csv output/soutput.png
+	#java -classpath bin $(pMAIN_CLASS) input/1025_by_1025_all_4.csv output/poutput.png
 
 

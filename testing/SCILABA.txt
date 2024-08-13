@@ -1,0 +1,6 @@
+OS Name	Microsoft Windows 10 Enterprise
+System Name	SCI-A-044
+System Type	x64-based PC
+Processor	12th Gen Intel(R) Core(TM) i5-12400, 2500 Mhz, 6 Core(s), 12 Logical Processor(s)
+Installed Physical Memory (RAM)	16,0 GB
+System Model	PPB660M-C

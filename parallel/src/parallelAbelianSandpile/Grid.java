@@ -5,7 +5,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.ForkJoinPool;
-
 import javax.imageio.ImageIO;
 
 //This class is for the grid for the Abelian Sandpile cellular automaton
@@ -14,7 +13,8 @@ public class Grid {
 	private int [][] grid; //grid 
 	private int [][] updateGrid;//grid for next time step
 	private static boolean change;
-
+	int cutoffX;
+	int cutoffY;
 	private final ForkJoinPool pool = ForkJoinPool.commonPool();
     
 	public Grid(int w, int h) {
@@ -29,6 +29,9 @@ public class Grid {
 				updateGrid[i][j]=0;
 			}
 		}
+		int numCores = Runtime.getRuntime().availableProcessors()-1;
+		cutoffX = ((numCores>=w)? w:w/numCores);
+		cutoffY = ((numCores>=h)? h:h/numCores);
 	}
 
 	public Grid(int[][] newGrid) {
@@ -88,12 +91,8 @@ public class Grid {
 	//key method to calculate the next update grid
 	boolean update() {
 		change=false;
-		Updater ud = new Updater(grid,updateGrid,1,1,rows-2,columns-2);
+		Updater ud = new Updater(grid,updateGrid,1,1,rows-2,columns-2,cutoffX,cutoffY);
 		change = pool.invoke(ud);	
-	//	try{
-	//		gridToImage("output/output_parallel.png"); //write grid as an image - you must do this.
-	//		Thread.sleep(500);
-	//	}catch (Exception e) {}
 	if (change) { nextTimeStep();}
 	return change;
 	}
